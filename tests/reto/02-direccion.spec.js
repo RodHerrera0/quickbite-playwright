@@ -16,11 +16,15 @@ test('RETO 2 - no debería continuar al pago con dirección vacía', async ({ pa
   // TODO 1: intenta continuar al pago sin escribir una dirección.
   // Pista: busca el botón "Continuar al pago".
 
+    await page.getByRole('button', { name: /continuar al pago/i }).click();
 
   // TODO 2: comprueba que el formulario de dirección
   // DEBERÍA seguir visible.
   // Pista: busca el heading "Dirección de entrega".
 
+    await expect(
+    page.getByRole('heading', { name: 'Dirección de entrega' })
+  ).toBeVisible();
 
   // Ejemplos de estructuras que puedes utilizar:
   // await page.getByRole('button', { name: /.../ }).click();
